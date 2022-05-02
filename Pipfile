@@ -8,6 +8,7 @@ sqlalchemy = "*"
 passlib = {extras = ["bcrypt"], version = "*"}
 fastapi = {extras = ["full"], version = "*"}
 pyjwt = "*"
+uvicorn = {extras = ["standard"], version = "*"}
 
 [dev-packages]
 

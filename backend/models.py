@@ -8,19 +8,19 @@ import database as _db
 
 
 class User(_db.Base):
-    __labelname__ = "users"
+    __tablename__ = "users"
     id = _sql.Column(_sql.Integer, primary_key=True, index=True)
     email = _sql.Column(_sql.String, unique=True, index=True)
-    hashed_password = _sql.Column(_sql.String, index=False)
+    hashed_password = _sql.Column(_sql.String)
 
-    def verify_password(self, password: str) -> bool:
+    def verify_password(self, password: str):
         return _hash.bcrypt.verify(password, self.hashed_password)
 
     lead = _orm.relationship("Lead", back_populates="owner")
 
 
 class Lead(_db.Base):
-    __labelname__ = "leads"
+    __tablename__ = "leads"
     id = _sql.Column(_sql.Integer, primary_key=True, index=True)
     owner_id = _sql.Column(_sql.Integer, _sql.ForeignKey("users.id"))
     first_name = _sql.Column(_sql.String, index=True)

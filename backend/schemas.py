@@ -1,7 +1,6 @@
 import datetime as _dt
 
 from dataclasses import dataclass
-import email
 
 
 @dataclass
